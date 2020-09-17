@@ -1,3 +1,4 @@
+import json
 from django.db import models
 
 
@@ -109,4 +110,5 @@ class Transactions(models.Model):
         """
         self.cc_num = str('X')*12 + self.cc_num[-4:]
         self.cvv = 'XXX'
+        self.response = json.dumps(self.response) if self.response else None
         super(Transactions, self).save(*args, **kwargs)
