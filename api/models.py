@@ -101,3 +101,12 @@ class Transactions(models.Model):
         db_table = 'transactions'
         verbose_name = 'transactions'
         verbose_name_plural = 'transactions'
+
+    def save(self, *args, **kwargs):
+        """
+        Storing the CC Num is a breech of privacy, only keep the last 4 digits of it, replacing the first 12 as Xs
+        likewise, storing the CVV is also not good, only record it as 3 Xs,
+        """
+        self.cc_num = str('X')*12 + self.cc_num[-4:]
+        self.cvv = 'XXX'
+        super(Transactions, self).save(*args, **kwargs)
