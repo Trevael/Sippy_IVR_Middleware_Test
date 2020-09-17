@@ -3,6 +3,12 @@ from rest_framework import serializers
 from api.models import Transactions
 
 
+class TransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Transactions
+        fields = '__all__'
+
+
 class TransactionRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transactions
