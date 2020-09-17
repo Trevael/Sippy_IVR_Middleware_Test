@@ -2,9 +2,9 @@ from django.db import models
 
 
 class Transactions(models.Model):
-    id = models.IntegerField(blank=False, null=False, primary_key=True)
-    cc_num = models.CharField(blank=False, null=False, max_length=4) # We are only storing the last 4 digits to prevent security breaches
+    cc_num = models.CharField(blank=False, null=False, max_length=16)
     created = models.DateTimeField(auto_now_add=True)
+    cvv = models.CharField(blank=False, null=False, max_length=3)
     exp_date = models.CharField(blank=False, null=False, max_length=4)
     response = models.TextField(blank=True, null=True) #See JSON example below
     response_code = models.CharField(blank=False, null=False, max_length=3)

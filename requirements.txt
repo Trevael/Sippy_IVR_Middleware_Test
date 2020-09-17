@@ -1,4 +1,6 @@
 Django==2.0.3
 djangorestframework==3.7.7
 mysqlclient==2.0.1
+pylint-django==2.3.0
+rope==0.17.0
 stripe==2.51.0
